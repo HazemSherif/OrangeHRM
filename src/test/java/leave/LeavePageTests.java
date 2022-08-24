@@ -22,13 +22,22 @@ public class LeavePageTests extends TestBase {
 
         DashBoardPage dashboardpage =  loginPage.clickLoginButton();
         LeavePage leavepage = dashboardpage.clickLeavePageLink();
-        leavepage.clickOnLeaveListLink();
+        leavepage.clickOnAssignLeaveLink();
         Assert.assertEquals(leavepage.getActiveLink(),"Leave");
         Assert.assertEquals(leavepage.getVisitedLink(),"Assign Leave");
-        leavepage.enterEmployeeName("Charlie  Carter");
-        leavepage.getLeaveTypeList().get(1);
+        leavepage.enterEmployeeName("J ","2023-08-26","2023-08-30");
+        leavepage.pickLeaveTypeOption();
+       // leavepage.clickOnFromDateButton();
+       // leavepage.clickOnToDateButton();
+        //leavepage.clickOnTheCalender();
+        leavepage.pickPartialDaysOption();
+        leavepage.durationOption();
+        leavepage.selectFromdate();
 
-        //leavepage.gettextytext(0);
+        leavepage.typeComment("hazem was here");
+        leavepage.clickOnAssignButton();
+        leavepage.clickOnConfirmationButton();
+
 
     }
 }
