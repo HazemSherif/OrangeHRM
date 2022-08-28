@@ -24,7 +24,8 @@ public class LeavePage extends PageBase{
 
     @FindBy (xpath = "(//input[@placeholder = \"Type for hints...\"])")
     WebElement employeeName;
-    @FindBy(xpath = "(//div[@name = 'oxd-autocomplete-dropdown'])[1]")
+
+    @FindBy(xpath = "(//*[text ()= 'John  Smith'])")
     WebElement employeeNameOption;
     @FindBy (xpath = "(/html/body/div/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[1]/div/div[2]/div/div)")
     WebElement leaveList;
@@ -66,14 +67,12 @@ public class LeavePage extends PageBase{
     WebElement increaseMinute;
     @FindBy (xpath = "(/html/body/div/div[1]/div[2]/div[2]/div/div/form/div[4]/div/div[3]/div/div[2]/div/div[2]/div[3]/i[2])")
     WebElement decreaseMinute;
-    @FindBy (name = "am")
+    @FindBy (xpath = "(//*[@class=\"oxd-time-period-label\"])[2]")
     WebElement selectAMOption;
-    @FindBy (xpath = "(//input[@name = 'pm'])")
+    @FindBy (xpath = "(//*[@class=\"oxd-time-period-label\"])[1]")
     WebElement selectPMOption;
-
     @FindBy (xpath = "(//div//textarea[@class = 'oxd-textarea oxd-textarea--active oxd-textarea--resize-vertical'])")
     WebElement commentSectionInputField;
-
     @FindBy(xpath = "(//button[@class = 'oxd-button oxd-button--medium oxd-button--secondary orangehrm-button-margin'])")
     WebElement okayButton;
     @FindBy(xpath ="//button[@type = 'submit']")
@@ -84,12 +83,13 @@ public class LeavePage extends PageBase{
         super(driver);
     }
 
-    public void selectFromdate(){
+    public void selectFromdate() throws InterruptedException {
         click_on(fromButton);
         click_on(increaseHour);
         click_on(increaseMinute);
        // click_on(selectAMOption);
-        //click_on(selectPMOption);
+       // Thread.sleep(60000);
+        click_on(selectPMOption);
     }
     public String getActiveLink(){
         return getLinkText(activeLink);
@@ -101,10 +101,11 @@ public class LeavePage extends PageBase{
         click_on(assignLeaveLink);
     }
 
-    public void enterEmployeeName(String string,String fromdate,String todate){
+    public void enterEmployeeName(String string,String fromdate,String todate) throws InterruptedException {
 
         type(employeeName,string);
-       // click_on(employeeNameOption);
+       // Thread.sleep(10000);
+        click_on(employeeNameOption);
         type(toDateInput,todate);
         type(fromDateInput,fromdate);
     }

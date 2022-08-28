@@ -18,14 +18,15 @@ public class LeavePageTests extends TestBase {
     }
 
     @Test
-    public void TestAssignLeaveWorksProperly (){
+    public void TestAssignLeaveWorksProperly () throws InterruptedException {
 
         DashBoardPage dashboardpage =  loginPage.clickLoginButton();
         LeavePage leavepage = dashboardpage.clickLeavePageLink();
         leavepage.clickOnAssignLeaveLink();
         Assert.assertEquals(leavepage.getActiveLink(),"Leave");
         Assert.assertEquals(leavepage.getVisitedLink(),"Assign Leave");
-        leavepage.enterEmployeeName("J ","2023-08-26","2023-08-30");
+        leavepage.enterEmployeeName("jo","2023-08-26","2023-08-30");
+
         leavepage.pickLeaveTypeOption();
        // leavepage.clickOnFromDateButton();
        // leavepage.clickOnToDateButton();
