@@ -8,14 +8,7 @@ import pages.LeavePage;
 
 public class LeavePageTests extends TestBase {
 
-    @Test
-    public void TestWeAreAtTheLeavePage (){
 
-        DashBoardPage dashboardpage =  loginPage.clickLoginButton();
-        LeavePage leavepage = dashboardpage.clickLeavePageLink();
-        Assert.assertEquals(dashboardpage.getActiveLink(),"Leave");
-        Assert.assertEquals(dashboardpage.getVisitedLink(),"Leave List");
-    }
 
     @Test
     public void TestAssignLeaveWorksProperly () throws InterruptedException {
@@ -28,9 +21,6 @@ public class LeavePageTests extends TestBase {
         leavepage.enterEmployeeName("jo","2023-08-26","2023-08-30");
 
         leavepage.pickLeaveTypeOption();
-       // leavepage.clickOnFromDateButton();
-       // leavepage.clickOnToDateButton();
-        //leavepage.clickOnTheCalender();
         leavepage.pickPartialDaysOption();
         leavepage.durationOption();
         leavepage.selectFromdate();

@@ -17,25 +17,32 @@ public class LeavePage extends PageBase{
     @FindBy (linkText = "Assign Leave")
     WebElement assignLeaveLink;
 
-   /* @FindAll({
-            @FindBy (xpath =" (//div[@class = 'oxd-input-group oxd-input-field-bottom-space'][@data-v-2fe357a6 = ''])")
-    })
-    private List inputFields;*/
-
     @FindBy (xpath = "(//input[@placeholder = \"Type for hints...\"])")
     WebElement employeeName;
-
     @FindBy(xpath = "(//*[text ()= 'John  Smith'])")
     WebElement employeeNameOption;
     @FindBy (xpath = "(/html/body/div/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[1]/div/div[2]/div/div)")
     WebElement leaveList;
     @FindBy (xpath = "(//i[@class = 'oxd-icon bi-caret-down-fill oxd-select-text--arrow'])")
     WebElement listButton;
-
     @FindBy(xpath = "(//div[@class = 'oxd-date-input'])[1]//input")
     WebElement fromDateInput;
     @FindBy(xpath = "((//div[@class = 'oxd-date-input'])[2])//input")
     WebElement toDateInput;
+    @FindBy(xpath = "(//i[@class ='oxd-icon bi-calendar oxd-date-input-icon'])")
+    WebElement openCalendarButton;
+    @FindBy(xpath = "(//li[@class ='oxd-calendar-selector-month'])")
+    WebElement monthSelectorButton;
+    // Not Ideal
+    @FindBy(xpath = "(//*[text() = 'May'])")
+    WebElement monthSelectorOption;
+    @FindBy(xpath = "(//li[@class ='oxd-calendar-selector-year'])")
+    WebElement yearSelector;
+    // Not Ideal
+    @FindBy(xpath = "(//div[@class ='oxd-calendar-dates-grid' & text() = '17'])")
+    WebElement fifteenAugDateOption;
+    @FindBy(xpath = "(//div[@class ='oxd-calendar-dates-grid'](//div[@class = 'oxd-calendar-date-wrapper'])[10])")
+    WebElement fifteenAugDate;
 
     @FindBy (xpath = "(//span[text()='CAN - Bereavement'])")
     WebElement leaveTypeOption1;
@@ -49,12 +56,10 @@ public class LeavePage extends PageBase{
     WebElement partialDaysSelector;
     @FindBy (xpath = "(//span[text()='All Days'])")
     WebElement partialDaysOption1;
-
     @FindBy (xpath = "((//i[@class = 'oxd-icon bi-caret-down-fill oxd-select-text--arrow'])[3])")
     WebElement durationButton;
     @FindBy (xpath = "(//span[text()='Specify Time'])")
     WebElement duration;
-
     @FindBy (xpath = "((//div//i[@class = 'oxd-icon bi-clock oxd-time-input--clock'])[1])")
     WebElement fromButton;
     @FindBy (xpath = "((//div//i[@class = 'oxd-icon bi-clock oxd-time-input--clock'])[2])")
@@ -106,6 +111,11 @@ public class LeavePage extends PageBase{
         type(employeeName,string);
        // Thread.sleep(10000);
         click_on(employeeNameOption);
+        click_on(openCalendarButton);
+        click_on(monthSelectorButton);
+        click_on(monthSelectorOption);
+        click_on(yearSelector);
+       // click_on(fifteenAugDateOption);
         type(toDateInput,todate);
         type(fromDateInput,fromdate);
     }
@@ -134,7 +144,6 @@ public class LeavePage extends PageBase{
     }
 
 
-
     public void durationOption(){
         click_on(durationButton);
         click_on(duration);
@@ -151,17 +160,12 @@ public class LeavePage extends PageBase{
     public void typeComment(String text){
         type(commentSectionInputField,text);
     }
-
     public void clickOnAssignButton(){
         click_on(assignButton);
     }
     public void clickOnConfirmationButton(){
         click_on(okayButton);
     }
-
-
-
-
 
     /* public void gettextytext(int i){
       getListHeaderText(inputFields,i);
